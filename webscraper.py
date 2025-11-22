@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template_string
 import requests
 from bs4 import BeautifulSoup
@@ -26,6 +27,50 @@ HTML_PAGE = """
         }
         a:hover { text-decoration: underline; }
         li { margin: 10px 0; }
+
+        /* ---------------- Extra Styling Added ---------------- */
+
+        body {
+            background: linear-gradient(135deg, #dfe9f3, #ffffff);
+        }
+
+        .card {
+            border: 2px solid #ddd;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 18px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-family: Verdana;
+        }
+
+        li {
+            list-style: none;
+            padding: 10px;
+            background: #fafafa;
+            border-radius: 6px;
+            border: 1px solid #eee;
+            transition: background 0.2s ease;
+        }
+
+        li:hover {
+            background: #e9f3ff;
+        }
+
+        a {
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        /* ------------------------------------------------------ */
+
     </style>
 </head>
 <body>
@@ -57,7 +102,6 @@ def scrape_website():
             href = link.get("href")
 
             if title and href:
-                # FIX: convert relative URL → FULL URL
                 full_url = urljoin(BASE_URL, href)
                 scraped_items.append((title, full_url))
 
