@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template_string
 import requests
 from bs4 import BeautifulSoup
@@ -27,8 +26,6 @@ HTML_PAGE = """
         }
         a:hover { text-decoration: underline; }
         li { margin: 10px 0; }
-
-        /* ---------------- Extra Styling Added ---------------- */
 
         body {
             background: linear-gradient(135deg, #dfe9f3, #ffffff);
@@ -68,9 +65,6 @@ HTML_PAGE = """
             font-weight: bold;
             letter-spacing: 0.5px;
         }
-
-        /* ------------------------------------------------------ */
-
     </style>
 </head>
 <body>
@@ -118,4 +112,5 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=8000, debug=True)
+
